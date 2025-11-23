@@ -1,0 +1,28 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #f4f8f3;
+  color: #1a1a1a;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #183a1d;
+  color: white;
+  padding: 10px 40px;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero {
+  background: url('/img/bg-hydro.jpg') center/cover no-repeat;
+  padding: 100px 50px;
+  color: white;
+  text-align: left;
+}
