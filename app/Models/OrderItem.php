@@ -26,13 +26,27 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+  protected $appends = ['unit_amount', 'total_amount'];
 
-    // Hitung total otomatis saat membuat item
-    protected static function booted()
-    {
-        static::creating(function ($item) {
-            $item->price = $item->product?->price ?? 0;
-            $item->total = $item->price * $item->quantity;
-        });
-    }
+// Getter/Setter alias untuk unit_amount <-> price
+public function getUnitAmountAttribute()
+{
+    return $this->attributes['price'] ?? null;
+}
+
+public function setUnitAmountAttribute($value)
+{
+    $this->attributes['price'] = $value;
+}
+
+// Getter/Setter alias untuk total_amount <-> total
+public function getTotalAmountAttribute()
+{
+    return $this->attributes['total'] ?? null;
+}
+
+public function setTotalAmountAttribute($value)
+{
+    $this->attributes['total'] = $value;
+}
 }

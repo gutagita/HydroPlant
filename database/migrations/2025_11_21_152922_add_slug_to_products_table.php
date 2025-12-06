@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-             $table->string('slug');
-        });
+        // CEK DULU apakah kolom slug sudah ada
+        if (!Schema::hasColumn('products', 'slug')) {
+            Schema::table('products', function (Blueprint $table) {
+                $table->string('slug')->after('name');
+            });
+        }
     }
 
     /**
@@ -21,8 +24,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-        });
+        // Hanya drop jika kolom slug ada
+        if (Schema::hasColumn('products', 'slug')) {
+            Schema::table('products', function (Blueprint $table) {
+                $table->dropColumn('slug');
+            });
+        }
     }
 };
