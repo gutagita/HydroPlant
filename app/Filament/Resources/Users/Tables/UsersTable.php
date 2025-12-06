@@ -9,6 +9,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ViewAction;
 
 class UsersTable
 {
@@ -49,6 +50,7 @@ class UsersTable
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
+                ViewAction::make(),
             ])
 
             // Aksi toolbar yang bisa dipilih banyak (bulk actions)
